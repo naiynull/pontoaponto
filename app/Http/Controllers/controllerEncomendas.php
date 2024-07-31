@@ -11,7 +11,8 @@ class controllerEncomendas extends Controller
      */
     public function index()
     {
-        //
+        $dados = Encomendas::all();
+        return view("")
     }
 
     /**

@@ -19,7 +19,7 @@
                     <input class ="form-check-input" type =" radio " name ="
                         pergunta" id =" pergunta" value ="A">
                     <label class ="form-check-label " for="pergunta">
-                        <h5> Responsável pela primeira composição do Maiden
+                        <h5> Responsável pela primeira composição do Maid
                             </h5>
                     </label>
                 </div>
