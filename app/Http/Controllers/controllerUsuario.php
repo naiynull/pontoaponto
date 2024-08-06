@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Cliente;
 
 class controllerUsuario extends Controller
 {
@@ -11,8 +12,8 @@ class controllerUsuario extends Controller
      */
     public function index()
     {
-        $dados = Usuario::all();
-        return view('exibircliente', compact('dados'));
+        $dados = Cliente::all();
+        return view('Cliente/exibirCliente', compact('dados'));
     }
 
     /**
@@ -20,7 +21,7 @@ class controllerUsuario extends Controller
      */
     public function create()
     {
-        return view('novocliente');
+        return view('Cliente/novoCliente');
     }
 
     /**
@@ -28,13 +29,13 @@ class controllerUsuario extends Controller
      */
     public function store(Request $request)
     {
-        $dados = new Agenda();
+        $dados = new Cliente();
         $dados->nomecliente = $request->input('nomecliente');
         $dados->telefonecliente = $request->input('telefonecliente');
         $dados->emailcliente = $request->input('emailcliente');
         $dados->enderecocliente = $request->input('enderecocliente');
         $dados->save();
-        return redirect('/contatos')->with('success', 'Novo contato cadastrado com sucesso.');
+        return redirect('/Cliente')->with('success', 'Novo contato cadastrado com sucesso.');
     }
 
     /**
@@ -50,9 +51,9 @@ class controllerUsuario extends Controller
      */
     public function edit(string $id)
     {
-        $dados = Usuario::find($id);
+        $dados = Cliente::find($id);
         if(isset($dados)){
-            return view('editarcliente', compact('dados'));
+            return view('Cliente/editarCliente', compact('dados'));
         }
     }
 
@@ -61,7 +62,7 @@ class controllerUsuario extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $dados = Usuario::find($id);
+        $dados = Cliente::find($id);
         if(isset($dados)){
             $dados->nomeContato = $request->input('nomecliente');
             $dados->telContato = $request->input('telefonecliente');
@@ -78,7 +79,7 @@ class controllerUsuario extends Controller
      */
     public function destroy(string $id)
     {
-        $dados = Usuario::find($id);
+        $dados = Cliente::find($id);
         if(isset($dados)){
             $dados->delete();
             return redirect('/cliente')->with('success', 'Contato deletado com sucesso.');

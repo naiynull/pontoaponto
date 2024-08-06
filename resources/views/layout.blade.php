@@ -7,7 +7,7 @@
     <title>PONTO A PONTO</title>
     @vite(['resources/js/app.js'])
 </head>
-<body>
+<body class="body">
     <div class="container py-5">
     <div class="container text-center py-5">
         @component('navbar')

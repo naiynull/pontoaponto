@@ -1,0 +1,39 @@
+ /* NAVBAR */
+ .navbar-nav .nav-link {
+    padding-right: 20px; /* Espaçamento entre os links */
+}
+.navbar {
+    background-color: #481164;
+}
+
+/* INDEX */
+
+.jumbotron .container {
+    background-color: #481164;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* FOOTER */
+footer {
+    position: absolute;
+    bottom: 0;
+}
+
+footer p {
+    margin-bottom: .25rem;
+}
+
+/* LOGO */
+#logo1 {
+   width: 65px;
+   height: 65px;
+ }
+ #logo2 {
+    width: 300px;
+  }
+
+  .body {
+    background-color: rgb(209, 194, 219);
+  }

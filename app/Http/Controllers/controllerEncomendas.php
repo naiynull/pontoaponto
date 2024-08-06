@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Pedidos;
+use Illuminate\Support\Facades\DB;
+
 
 class controllerEncomendas extends Controller
 {
@@ -11,8 +14,8 @@ class controllerEncomendas extends Controller
      */
     public function index()
     {
-        $dados = Encomendas::all();
-        return view("")
+        $dados = Pedido::all();
+        return view('Pedidos/exibePedido', compact('dados'));
     }
 
     /**
@@ -20,7 +23,7 @@ class controllerEncomendas extends Controller
      */
     public function create()
     {
-        //
+        return view('Pedidos/novoPedido');
     }
 
     /**
@@ -28,7 +31,12 @@ class controllerEncomendas extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dados = new Pedido();
+        $dados->Nome = $request->input('nomeproduto');
+        $dados->Estoque = $request->input('estoqueproduto');
+        if($dados->save())
+            return redirect('/pedido')->with('success', 'Pedidos cadastrado com sucesso!!');
+        return redirect('/pedido')->with('danger', 'Erro ao cadastrar Pedidos!');
     }
 
     /**
@@ -36,7 +44,7 @@ class controllerEncomendas extends Controller
      */
     public function show(string $id)
     {
-        //
+        
     }
 
     /**
@@ -44,7 +52,10 @@ class controllerEncomendas extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $dados = Peca::find($id);
+        if(isset($dados))
+            return view('Pedidos/editaProduto', compact('dados'));
+        return redirect('/pedido')->with('danger', 'Cadastro dos produtos não localizado!');
     }
 
     /**
@@ -52,7 +63,20 @@ class controllerEncomendas extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $dados = Pedidos::find($id);
+        if(isset($dados)){
+        $dados->Nome = $request->input('nome');
+        $dados->Estoque = $request->input('estoque');
+        $dados->Preco = $request->input('preco');
+        $dados->Material = $request->input('material');
+        $dados->Descricao = $request->input('descricao');
+        $dados->Categoria = $request->input('categoria');
+         
+            $dados->save();
+            return redirect('/pedido')->with('success', 'Cadastro do 
+            Peça atualizado com sucesso!!');
+        }
+        return redirect('/pedido')->with('danger', 'Cadastro de produto não localizado!');
     }
 
     /**
@@ -60,6 +84,12 @@ class controllerEncomendas extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $dados = Pedidos::find($id);
+        if(isset($dados)){
+            $dados->delete();
+            return redirect('/pedido')->with('success', 'Contato deletado com sucesso.');
+        }
+        return redirect('/pedido')->with('danger', 'Erro ao tentar deletar contato.');
     }
 }
+
