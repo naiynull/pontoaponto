@@ -11,7 +11,8 @@ class controllerEncomendaspecas extends Controller
      */
     public function index()
     {
-        //
+        $dados = PedidoProduto::all();
+        return view('PedidoProduto/exibeDetalhesPedido', compact('dados'));
     }
 
     /**
@@ -27,7 +28,16 @@ class controllerEncomendaspecas extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $dados = new PedidoProduto();
+        $dados->Quantidade = $request->input('quant');
+        $dados->pedidos_id = $request->input('Pedido');
+        $dados->produtos_id = $request->input('produtos_id');
+
+
+        if($dados->save())
+            return redirect('/PedidoProduto')->with('success', 'Produto cadastrado com sucesso!!');
+        return redirect('/PedidoProduto')->with('danger', 'Erro ao cadastrar Produto!');
     }
 
     /**
@@ -59,6 +69,11 @@ class controllerEncomendaspecas extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $dados = PedidoProduto::find($id);
+        if(isset($dados)){
+            $dados->delete();
+            return redirect('/PedidoProduto')->with('success', 'Contato deletado com sucesso.');
+        }
+        return redirect('/PedidoProduto')->with('danger', 'Erro ao tentar deletar contato.');
     }
 }

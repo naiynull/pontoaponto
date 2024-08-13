@@ -13,7 +13,7 @@ class controllerUsuario extends Controller
     public function index()
     {
         $dados = Cliente::all();
-        return view('Cliente/exibirCliente', compact('dados'));
+        return view('Cliente/exibeCliente', compact('dados'));
     }
 
     /**
@@ -34,8 +34,10 @@ class controllerUsuario extends Controller
         $dados->telefonecliente = $request->input('telefonecliente');
         $dados->emailcliente = $request->input('emailcliente');
         $dados->enderecocliente = $request->input('enderecocliente');
-        $dados->save();
-        return redirect('/Cliente')->with('success', 'Novo contato cadastrado com sucesso.');
+
+        if($dados->save())
+            return redirect('/cliente')->with('success', 'Cliente cadastrado com sucesso!!');
+        return redirect('/cliente')->with('danger', 'Erro ao cadastrar Cliente!');
     }
 
     /**
@@ -64,9 +66,7 @@ class controllerUsuario extends Controller
     {
         $dados = Cliente::find($id);
         if(isset($dados)){
-            $dados->nomeContato = $request->input('nomecliente');
-            $dados->telContato = $request->input('telefonecliente');
-            $dados->emailContato = $request->input('emailcliente');
+            $dados->telefonecliente = $request->input('telefonecliente');
             $dados->enderecocliente = $request->input('enderecocliente');
             $dados->save();
             return redirect('/cliente')->with('success', 'Contato atualizado com sucesso.');

@@ -35,5 +35,9 @@ footer p {
   }
 
   .body {
-    background-color: rgb(209, 194, 219);
+    background-color: #fff6ff;
+  }
+
+  .dropdown-menu {
+    background-color: #481164;
   }

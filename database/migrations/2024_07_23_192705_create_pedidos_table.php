@@ -15,10 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('cliente_id');
             $table->foreign('cliente_id')->references('id')->on('clientes');
-            $table->date('
-  
-            ');
-            $table->boolean('statuspedido');
+            $table->date('datapedido');
             $table->timestamps();
         });
     }

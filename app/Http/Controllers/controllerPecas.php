@@ -33,15 +33,16 @@ class controllerPecas extends Controller
     public function store(Request $request)
     {
         $dados = new Produto();
-        $dados->Nome = $request->input('nomeproduto');
-        $dados->Estoque = $request->input('estoqueproduto');
-        $dados->Preco = $request->input('precoproduto');
-        $dados->Material = $request->input('materialproduto');
-        $dados->Descricao = $request->input('descricaoproduto');
-        $dados->Categoria = $request->input('categoria');
+        $dados->nomeproduto = $request->input('nomeproduto');
+        $dados->estoqueproduto = $request->input('estoqueproduto');
+        $dados->precoproduto = $request->input('precoproduto');
+        $dados->materialproduto = $request->input('materialproduto');
+        $dados->descricaoproduto = $request->input('descricaoproduto');
+        $dados->categoria = $request->input('categoria');
         if($dados->save())
             return redirect('/Produto')->with('success', 'Produto cadastrado com sucesso!!');
         return redirect('/Produto')->with('danger', 'Erro ao cadastrar Produto!');
+        
     }
 
     /**
@@ -57,9 +58,9 @@ class controllerPecas extends Controller
      */
     public function edit(string $id)
     {
-        $dados = Peca::find($id);
+        $dados = Produto::find($id);
         if(isset($dados))
-            return view('Produto/editaProduto', compact('dados'));
+            return view('Produto/editarproduto', compact('dados'));
         return redirect('/Produto')->with('danger', 'Cadastro dos produtos não localizado!');
     }
 
@@ -70,18 +71,15 @@ class controllerPecas extends Controller
     {
         $dados = Produto::find($id);
         if(isset($dados)){
-        $dados->Nome = $request->input('nome');
-        $dados->Estoque = $request->input('estoque');
-        $dados->Preco = $request->input('preco');
-        $dados->Material = $request->input('material');
-        $dados->Descricao = $request->input('descricao');
-        $dados->Categoria = $request->input('categoria');
-         
+            $dados->estoqueproduto = $request->input('estoqueproduto');
+            $dados->precoproduto = $request->input('precoproduto');
+    
             $dados->save();
             return redirect('/Produto')->with('success', 'Cadastro do 
-            Peça atualizado com sucesso!!');
-        }
-        return redirect('/Produto')->with('danger', 'Cadastro de produto não localizado!');
+            produto atualizado com sucesso!!');
+        }else{
+            return redirect('/Produto')->with('danger', 'Cadastro de produto não localizado!');
+        } 
     }
 
     /**
@@ -94,7 +92,7 @@ class controllerPecas extends Controller
             $livros = PedidoProduto::where('produtos_id', '=', $id)->first();
             if(!isset($Pedidos)){
                 $dados->delete();
-                return redirect('/Produto')->with('success', 'Cadastro do P deletado com sucesso!!');
+                return redirect('/Produto')->with('success', 'Cadastro do roduto deletado com sucesso!!');
             }else{
                 return redirect('/Produto')->with('danger', 'Cadastro não pode ser excluído!!');
             } 

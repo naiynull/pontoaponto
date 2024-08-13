@@ -5,20 +5,20 @@
     <div class="card-body">
         <div class="jumbotron">
             <div class="container">
-                <h1 class="mt-5 text-center">ATUALIZE OS DADOS DO PRODUTO</h1>
+                <h1 class="mt-5 text-center">ATUALIZE OS DADOS DO CLIENTE</h1>
             </div>
         </div>
-        <form action="/Produto/{{$dados->id}}" method="POST">
+        <form action="/cliente/{{$dados->id}}" method="POST">
             @csrf
             <div class="form-group">
-                <label for="nome">Estoque:</label>
-                <input type="text" class="form-control" name="estoqueproduto" 
-                       value="{{$dados->estoqueproduto}}">
+                <label for="nome">Endereço:</label>
+                <input type="text" class="form-control" name="enderecocliente" 
+                       value="{{$dados->enderecocliente}}">
             </div>
             <div class="form-group">
-                <label for="nome">Preço:</label>
-                <input type="text" class="form-control" name="precoproduto" 
-                       value="{{$dados->precoproduto}}">
+                <label for="nome">Telefone:</label>
+                <input type="text" class="form-control" name="telefonecliente" 
+                       value="{{$dados->telefonecliente}}">
             </div>
             <button type="submit" class="btn btn-outline-primary btn-sm">Salvar</button>
             <button onclick="window.location.href='{{route('inicio')}}';" type="button" 

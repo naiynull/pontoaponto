@@ -1,5 +1,6 @@
 @extends('layout')
 @section('content')
+
 <div class="container py-4">
 <div class="card border py-4">
     @if(session()->get('danger'))
@@ -11,17 +12,18 @@
             {{ session()->get('success') }}
         </div><br />
     @endif
-    <div class="card-body py-4">
-        <h5 class="card-title" style="text-align: center">Cadastro de Cliente</h5>
+    <div class="card-body">
+        <h5 class="card-title" style="text-align: center">Clientes Cadastrados</h5>
             <table class="table table-ordered table-hover">
                 <thead>
                     <tr>
                         <th>id</th>
                         <th>Nome</th>
-                        <th>E-mail</th>
+                        <th>Email</th>
                         <th>Telefone</th>
                         <th>Endereço</th>
-                        <th style="text-align:center" colspan="4">Ações</th>
+                     
+                        <th style="text-align:center" colspan="2">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,17 +35,11 @@
                         <td>{{ $item->telefonecliente }}</td>
                         <td>{{ $item->enderecocliente }}</td>
                         <td style="text-align:center">
-                            <a href="/novoAutorLivro/{{$item->id}}" class="btn btn-success">Cadastra Cliente</a>
+                            <a href="/cliente/editar/{{$item->id}}" class="btn btn-outline-primary">Editar</a>
                         </td>
                         <td style="text-align:center">
-                            <a href="/cliente/{{ $cliente->id }}/edit" class="btn btn-primary">Editar</a>
-                        </td>
-                        <td style="text-align:center">
-                            <form action="/cliente/{{ $cliente->id }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza de que deseja remover?');">Deletar</button>
-                            </form>
+                            <a href="/cliente/apagar/{{$item->id}}" class="btn btn-outline-danger" 
+                               onclick="return confirm('Tem certeza de que deseja remover?');">Deletar</a>
                         </td>
                     </tr>  
                     @endforeach
@@ -52,3 +48,4 @@
     </div>
 </div>
 </div>
+@endsection

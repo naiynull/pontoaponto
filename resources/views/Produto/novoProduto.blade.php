@@ -8,59 +8,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Novo Produto</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
-        .form-container {
-            margin-top: 60px; /* Aumenta a margem para afastar da navbar */
-            padding: 20px;
-            border-radius: 8px;
-            background-color: #ffffff;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            max-width: 800px; /* Define a largura máxima para centralizar melhor */
-            margin-left: auto;
-            margin-right: auto; /* Centraliza horizontalmente */
-        }
-        .form-heading {
-            margin-bottom: 20px;
-        }
-    </style>
 </head>
 <body>
     <div class="container">
         <div class="form-container">
             <h1 class="text-center form-heading">Cadastrar Novo Produto</h1>
-            <form id="product-form">
+            <form action="{{route('gravaNovoProduto')}}" method="POST" id="product-form">
+                @csrf
                 <div class="form-row">
+
                     <div class="form-group col-md-6">
                         <label for="nome">Nome</label>
-                        <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome do Produto" required>
+                        <input type="text" class="form-control" id="nome" name="nomeproduto" placeholder="Nome do Produto" required>
                     </div>
+
                     <div class="form-group col-md-6">
                         <label for="estoque">Estoque</label>
-                        <input type="number" class="form-control" id="estoque" name="estoque" placeholder="Quantidade em Estoque" required>
+                        <input type="number" class="form-control" id="estoque" name="estoqueproduto" placeholder="Quantidade em Estoque" required>
                     </div>
+
                 </div>
                 <div class="form-row">
+
                     <div class="form-group col-md-6">
                         <label for="preco">Preço</label>
-                        <input type="text" class="form-control" id="preco" name="preco" placeholder="Preço do Produto" required>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">R$</span>
+                            <input type="text" class="form-control" id="preco" name="precoproduto" placeholder="Preço do Produto" required>
+                        </div>
+                        
                     </div>
+
                     <div class="form-group col-md-6">
                         <label for="material">Material</label>
-                        <input type="text" class="form-control" id="material" name="material" placeholder="Material do Produto" required>
+                        <select class="custom-select" id="inputGroupSelect01" name="materialproduto">
+                            <option selected>Escolha o Material</option>
+                            <option value="1">Lã</option>
+                            <option value="2">Fio de malha</option>
+                            <option value="3">Barbante</option>
+                            <option value="4">Fio poliéster</option>
+                            <option value="5">Algodão</option>
+                        </select>
                     </div>
+
                 </div>
                 <div class="form-group">
+
                     <label for="descricao">Descrição</label>
-                    <textarea class="form-control" id="descricao" name="descricao" rows="3" placeholder="Descrição do Produto" required></textarea>
+                    <textarea class="form-control" id="descricao" name="descricaoproduto" rows="3" placeholder="Descrição do Produto" required></textarea>
+                    
                 </div>
-                <div class="form-group">
-                    <label for="imagem">Imagem</label>
-                    <input type="file" class="form-control-file" id="imagem" name="imagem" accept="image/*" required>
+                <div class="input-group mb-3">
+
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Categoria</label>
+                    </div>
+                    <select class="custom-select" id="inputGroupSelect01" name="categoria">
+                        <option selected>Escolha a Categoria</option>
+                        <option value="1">Acessorio</option>
+                        <option value="2">Roupas</option>
+                        <option value="3">Decorações</option>
+                        <option value="4">Produtos para Bebês e Crianças</option>
+                        <option value="5">Produtos sazonais</option>
+                        <option value="6">Itens para Pet</option>
+                        <option value="7">Amigurumis</option>
+                    </select>
+
                 </div>
-                <button type="submit" class="btn btn-primary">Cadastrar Produto</button>
+
+                <button type="submit" class="btn" id="botao">Cadastrar Produto</button>
             </form>
         </div>
     </div>
