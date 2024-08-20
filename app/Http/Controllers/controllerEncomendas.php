@@ -88,7 +88,8 @@ class controllerEncomendas extends Controller
         }
         return redirect('/pedido')->with('danger', 'Erro ao tentar deletar contato.');
     }
-    public function novoProduto($id){
+    public function novoProduto(Request $request)
+    {
         $dados = DB::table('produtos')->orderBy('nomeproduto')->get();
         if(isset($dados)){
             $pedidos = Pedidos::find($id);
@@ -96,7 +97,7 @@ class controllerEncomendas extends Controller
             $dados->pedidos_id = $id;
             return view('novoPedidoProduto', compact('dados'));
         }
-        return redirect('/pedido')->with('danger', 'Não há autores cadastrados!!');
+        return redirect('/pedido')->with('danger', 'Não há produtos cadastrados!!');
     }
 
 }

@@ -23,7 +23,7 @@
                             <a href="/novoPedidoProduto/{{$i['id']}}" class="btn btn-success">Cadastra Produtos</a>
                         </td>
                         <td style="text-align:center">
-                            <a href="/pedidoProduto/detalhes/{{$i['id']}}" class="btn btn-secondary">Detalhes</a>
+                            <a href="/pedidoProduto/{{$i['id']}}" class="btn btn-secondary">Detalhes</a>
                         </td>
                         <td style="text-align:center">
                             <a href="/pedido/editar/{{$i['id']}}" class="btn btn-outline-primary">Editar</a>

@@ -19,7 +19,7 @@
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->Nome }}</td>
                         <td style="text-align:center">
-                            <a href="/livroAutor/apagar/{{$item->id}}" class="btn btn-outline-danger" 
+                            <a href="/pedidoProduto/apagar/{{$item->id}}" class="btn btn-outline-danger" 
                                onclick="return confirm('Tem certeza de que deseja remover?');">Deletar</a>
                         </td>
                     </tr>  
@@ -31,9 +31,4 @@
                 </tbody>
             </table>
     </div>
-</div>
-    <div class="card-footer">
-        <a href="/livro" class="btn btn-info btn-sm" role="button">Voltar</a>
-    </div>
-</div>
 @endsection

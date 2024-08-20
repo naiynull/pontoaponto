@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\PedidoProduto;
-use App\Models\Encomendas;
-use App\Models\Pecas;
+use App\Models\Pedidos;
+use App\Models\Produto;
 
 class controllerEncomendaspecas extends Controller
 {
@@ -15,16 +15,17 @@ class controllerEncomendaspecas extends Controller
     private $PP;
 
     public function __construct(PedidoProduto $item){
-        $this->$PP = $item;
+        $this->PP = $item;
     }
+
 
     public function index($id)
     {
-        $dados = $this->$PP->where('pedidos_id', $id)->get();
-        $Pedidos = Encomendas::find($id);
+        $dados = $this->PP->where('pedidos_id', $id)->get();
+        $Pedidos = Pedidos::find($id);
         $dados-> nomecliente = $Pedidos->nomecliente;
         foreach($dados as $item){
-            $produto = Produto::find($item->autprodutos_id);
+            $produto = Produto::find($item->produtos_id);
             $item->nomeproduto = $produto->nomeproduto;
         }
         return view('exibirPedidoProduto', compact('dados'));
