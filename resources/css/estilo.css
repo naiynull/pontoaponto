@@ -9,7 +9,7 @@
 /* INDEX */
 
 .jumbotron .container {
-    background-color: #481164;
+    background-color: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,17 +27,22 @@ footer p {
 
 /* LOGO */
 #logo1 {
-   width: 65px;
-   height: 65px;
- }
- #logo2 {
-    width: 300px;
-  }
+  width: 65px;
+  height: 65px;
+}
+#logo2 {
+  width: 496px;
+}
 
-  .body {
-    background-color: #fff6ff;
-  }
+.body {
+  background-color: #481164;
+}
 
-  .dropdown-menu {
-    background-color: #481164;
-  }
+.dropdown-menu {
+  background-color: #481164;
+}
+
+#backblur {
+  background-color: #481164;
+}
+

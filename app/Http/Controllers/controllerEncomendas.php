@@ -15,7 +15,7 @@ class controllerEncomendas extends Controller
      */
     public function index()
     {
-        $dados = Pedidos::all();
+        $dados = Pedidos::with('cliente')->get();
         return view('Pedidos/exibirpedidos', compact('dados'));
     }
 
@@ -35,6 +35,7 @@ class controllerEncomendas extends Controller
     public function store(Request $request)
     {
         $dados = new Pedidos();
+        $dados->cliente_id = $request->input('clientes');
         $dados->datapedido = $request->input('datapedido');
         if($dados->save())
             return redirect('/pedido')->with('success', 'Pedidos cadastrado com sucesso!!');
@@ -87,5 +88,16 @@ class controllerEncomendas extends Controller
         }
         return redirect('/pedido')->with('danger', 'Erro ao tentar deletar contato.');
     }
+    public function novoProduto($id){
+        $dados = DB::table('produtos')->orderBy('nomeproduto')->get();
+        if(isset($dados)){
+            $pedidos = Pedidos::find($id);
+            $dados->nomecliente = $pedidos->nomecliente;
+            $dados->pedidos_id = $id;
+            return view('novoPedidoProduto', compact('dados'));
+        }
+        return redirect('/pedido')->with('danger', 'Não há autores cadastrados!!');
+    }
+
 }
 

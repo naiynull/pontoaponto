@@ -76,7 +76,7 @@
 
                 </div>
 
-                <button type="submit" class="btn" id="botao">Cadastrar Produto</button>
+                <button type="submit" id="enviar" class="btn" id="botao">Cadastrar Produto</button>
             </form>
         </div>
     </div>

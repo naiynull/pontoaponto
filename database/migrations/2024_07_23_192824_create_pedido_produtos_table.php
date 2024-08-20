@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('produtos_id');
             $table->foreign('produtos_id')->references('id')->on('produtos');
             $table->double('quant');
+            $table->date('dataproduto');
             $table->timestamps();
         });
     }

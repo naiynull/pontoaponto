@@ -8,24 +8,34 @@
                 <thead>
                     <tr>
                         <th>id</th>
-                        <th>Nome do Autor</th>
+                        <th>Nome do Cliente</th>
+                        <th>Data do Pedido</th>
                         <th style="text-align:center">Ação</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($dados as $item)
+                @forelse ($dados as $item => $i)
                     <tr>
-                        <td>{{ $item->id }}</td>
-                        <td>{{ $item->nomecliente }}</td>
-                        <td>{{ $item-> datapedido }}</td>
+                    <td>{{$i['id']}}</td>
+                    <td>{{$i['cliente']['nomecliente']}}</td>
+                    <td>{{$i['datapedido']}}</td>
                         <td style="text-align:center">
-                            <a href="/pedido/apagar/{{$item->id}}" class="btn btn-outline-danger" 
+                            <a href="/novoPedidoProduto/{{$i['id']}}" class="btn btn-success">Cadastra Produtos</a>
+                        </td>
+                        <td style="text-align:center">
+                            <a href="/pedidoProduto/detalhes/{{$i['id']}}" class="btn btn-secondary">Detalhes</a>
+                        </td>
+                        <td style="text-align:center">
+                            <a href="/pedido/editar/{{$i['id']}}" class="btn btn-outline-primary">Editar</a>
+                        </td>
+                        <td style="text-align:center">
+                            <a href="/pedido/apagar/{{$i['id']}}" class="btn btn-outline-danger" 
                                onclick="return confirm('Tem certeza de que deseja remover?');">Deletar</a>
                         </td>
                     </tr>  
-                    @empty 
+                    @empty
                         <tr>
-                            <td style="text-align:center" colspan="4">Não há autores cadastrados para este livro</td>                            
+                            <td style="text-align:center" colspan="4">Não há pedidos cadastrados</td>                            
                         </tr>
                     @endforelse
                 </tbody>

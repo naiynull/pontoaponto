@@ -1,9 +1,7 @@
 @extends('layout')
 @section('content')
-<div class="jumbotron" style="background-color: #481164;">
-    <div class="container">
-        <img src="{{asset('storage/imagens/logo2.png')}}" id="logo2" alt="logo">
-    </div>
+<div class="container">
+    <img src="{{asset('storage/imagens/logo2.png')}}" id="logo2" alt="logo">
 </div>
 
 <footer class="text-muted text-center">

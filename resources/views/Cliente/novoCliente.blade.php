@@ -40,7 +40,7 @@
                     <input type="text" class="form-control" id="inputAddress" name="enderecocliente" placeholder="Rua dos Bobos, nº 0" required>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Cadastrar Cliente</button>
+                <button type="submit" id="enviar" class="btn">Cadastrar Cliente</button>
             </form>
         </div>
     </div>

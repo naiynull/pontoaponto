@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 
-                <button type="submit" class="btn btn-primary">Enviar</button>
+                <button type="submit" id="enviar" class="btn">Enviar</button>
             </form>
         </div>
     </div>

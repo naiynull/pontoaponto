@@ -10,12 +10,30 @@
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <!-- JavaScript do Bootstrap -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+  <style>
+    .dropdown-menu {
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(80px);
+      border: none;
+    }
+    .dropdown-item {
+      display: block;
+      text-align: center;
+      color: white;
+    }
+    .dropdown-item:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
+    }
+  </style>
 </head>
 
 <body>
   <nav class="navbar navbar-dark fixed-top shadow-sm">
     <div class="container">
-      <img src="{{ asset('storage/imagens/logo1.png') }}" id="logo1" alt="Logo" style="height: 40px;">
+      <img src="{{ asset('storage/imagens/logo1.png') }}" id="logo1" alt="Logo">
       <a class="navbar-brand" href="{{route('inicio')}}">
         <strong>PONTO A PONTO</strong>
       </a>
@@ -35,7 +53,7 @@
             </div>
           </li>
 
-          <li class="nav-item">
+          <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Pedidos</a>
             <div class="dropdown-menu">
               <a class="dropdown-item" href="{{route('novoPedido')}}">Cadastrar Pedido</a>

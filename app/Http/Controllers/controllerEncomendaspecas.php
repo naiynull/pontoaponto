@@ -3,16 +3,31 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\PedidoProduto;
+use App\Models\Encomendas;
+use App\Models\Pecas;
 
 class controllerEncomendaspecas extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    private $PP;
+
+    public function __construct(PedidoProduto $item){
+        $this->$PP = $item;
+    }
+
+    public function index($id)
     {
-        $dados = PedidoProduto::all();
-        return view('PedidoProduto/exibeDetalhesPedido', compact('dados'));
+        $dados = $this->$PP->where('pedidos_id', $id)->get();
+        $Pedidos = Encomendas::find($id);
+        $dados-> nomecliente = $Pedidos->nomecliente;
+        foreach($dados as $item){
+            $produto = Produto::find($item->autprodutos_id);
+            $item->nomeproduto = $produto->nomeproduto;
+        }
+        return view('exibirPedidoProduto', compact('dados'));
     }
 
     /**
@@ -20,7 +35,7 @@ class controllerEncomendaspecas extends Controller
      */
     public function create()
     {
-        //
+       //
     }
 
     /**
@@ -28,18 +43,16 @@ class controllerEncomendaspecas extends Controller
      */
     public function store(Request $request)
     {
-        
         $dados = new PedidoProduto();
-        $dados->Quantidade = $request->input('quant');
-        $dados->pedidos_id = $request->input('Pedido');
-        $dados->produtos_id = $request->input('produtos_id');
-
+        $dados->produtos_id = $request->input('produto');
+        $dados->pedidos_id = $request->input('pedidos_id');
 
         if($dados->save())
             return redirect('/PedidoProduto')->with('success', 'Produto cadastrado com sucesso!!');
         return redirect('/PedidoProduto')->with('danger', 'Erro ao cadastrar Produto!');
     }
 
+    
     /**
      * Display the specified resource.
      */
