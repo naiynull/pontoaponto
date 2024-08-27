@@ -89,7 +89,7 @@ class controllerPecas extends Controller
     {
         $dados = Produto::find($id);
         if(isset($dados)){
-            $livros = PedidoProduto::where('produtos_id', '=', $id)->first();
+            $Pedidos = PedidoProduto::where('produtos_id', '=', $id)->first();
             if(!isset($Pedidos)){
                 $dados->delete();
                 return redirect('/Produto')->with('success', 'Cadastro do roduto deletado com sucesso!!');

@@ -43,11 +43,11 @@
                         <label for="material">Material</label>
                         <select class="custom-select" id="inputGroupSelect01" name="materialproduto">
                             <option selected>Escolha o Material</option>
-                            <option value="1">Lã</option>
-                            <option value="2">Fio de malha</option>
-                            <option value="3">Barbante</option>
-                            <option value="4">Fio poliéster</option>
-                            <option value="5">Algodão</option>
+                            <option value="Lã">Lã</option>
+                            <option value="Fio de malha">Fio de malha</option>
+                            <option value="Barbante">Barbante</option>
+                            <option value="Fio poliéster">Fio poliéster</option>
+                            <option value="Algodão">Algodão</option>
                         </select>
                     </div>
 
@@ -65,13 +65,13 @@
                     </div>
                     <select class="custom-select" id="inputGroupSelect01" name="categoria">
                         <option selected>Escolha a Categoria</option>
-                        <option value="1">Acessorio</option>
-                        <option value="2">Roupas</option>
-                        <option value="3">Decorações</option>
-                        <option value="4">Produtos para Bebês e Crianças</option>
-                        <option value="5">Produtos sazonais</option>
-                        <option value="6">Itens para Pet</option>
-                        <option value="7">Amigurumis</option>
+                        <option value="Acessorio">Acessorio</option>
+                        <option value="Roupas">Roupas</option>
+                        <option value="Decorações">Decorações</option>
+                        <option value="Produtos para Bebês e Crianças">Produtos para Bebês e Crianças</option>
+                        <option value="Produtos sazonais">Produtos sazonais</option>
+                        <option value="Itens para Pet">Itens para Pet</option>
+                        <option value="Amigurumis">Amigurumis</option>
                     </select>
 
                 </div>

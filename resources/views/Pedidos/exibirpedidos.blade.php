@@ -10,7 +10,7 @@
                         <th>id</th>
                         <th>Nome do Cliente</th>
                         <th>Data do Pedido</th>
-                        <th style="text-align:center">Ação</th>
+                        <th style="text-align:center"colspan="4">Ação</th>
                     </tr>
                 </thead>
                 <tbody>

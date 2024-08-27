@@ -88,14 +88,14 @@ class controllerEncomendas extends Controller
         }
         return redirect('/pedido')->with('danger', 'Erro ao tentar deletar contato.');
     }
-    public function novoProduto(Request $request)
+    public function novoProduto(Request $request, string $id )
     {
         $dados = DB::table('produtos')->orderBy('nomeproduto')->get();
         if(isset($dados)){
             $pedidos = Pedidos::find($id);
             $dados->nomecliente = $pedidos->nomecliente;
             $dados->pedidos_id = $id;
-            return view('novoPedidoProduto', compact('dados'));
+            return view('PedidoProduto/novoPedidoProduto', compact('dados'));
         }
         return redirect('/pedido')->with('danger', 'Não há produtos cadastrados!!');
     }

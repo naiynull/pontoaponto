@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\PedidoProduto;
 use App\Models\Pedidos;
 use App\Models\Produto;
+use App\Models\Cliente;
 
 class controllerEncomendaspecas extends Controller
 {
@@ -23,12 +24,13 @@ class controllerEncomendaspecas extends Controller
     {
         $dados = $this->PP->where('pedidos_id', $id)->get();
         $Pedidos = Pedidos::find($id);
-        $dados-> nomecliente = $Pedidos->nomecliente;
+        $Cliente = Cliente::find($Pedidos->cliente_id);
+        $dados-> nomecliente = $Cliente->nomecliente;
         foreach($dados as $item){
             $produto = Produto::find($item->produtos_id);
             $item->nomeproduto = $produto->nomeproduto;
         }
-        return view('exibirPedidoProduto', compact('dados'));
+        return view('PedidoProduto/exibirPedidoProduto', compact('dados'));
     }
 
     /**
@@ -45,12 +47,14 @@ class controllerEncomendaspecas extends Controller
     public function store(Request $request)
     {
         $dados = new PedidoProduto();
-        $dados->produtos_id = $request->input('produto');
+        $dados->produtos_id = $request->input('produtos');
         $dados->pedidos_id = $request->input('pedidos_id');
+        $dados->quant=$request->input('quant');
+        $dados->dataproduto=$request->input('dataproduto');
 
         if($dados->save())
-            return redirect('/PedidoProduto')->with('success', 'Produto cadastrado com sucesso!!');
-        return redirect('/PedidoProduto')->with('danger', 'Erro ao cadastrar Produto!');
+            return redirect('/pedido')->with('success', 'Produto cadastrado com sucesso!!');
+        return redirect('/pedido')->with('danger', 'Erro ao cadastrar Produto!');
     }
 
     
@@ -86,8 +90,8 @@ class controllerEncomendaspecas extends Controller
         $dados = PedidoProduto::find($id);
         if(isset($dados)){
             $dados->delete();
-            return redirect('/PedidoProduto')->with('success', 'Contato deletado com sucesso.');
+            return redirect('/pedido')->with('success', 'Contato deletado com sucesso.');
         }
-        return redirect('/PedidoProduto')->with('danger', 'Erro ao tentar deletar contato.');
+        return redirect('/pedido')->with('danger', 'Erro ao tentar deletar contato.');
     }
 }

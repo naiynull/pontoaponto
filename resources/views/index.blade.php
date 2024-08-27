@@ -1,6 +1,6 @@
 @extends('layout')
 @section('content')
-<div class="container">
+<div class="container2">
     <img src="{{asset('storage/imagens/logo2.png')}}" id="logo2" alt="logo">
 </div>
 

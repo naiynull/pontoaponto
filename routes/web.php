@@ -17,8 +17,8 @@ Route::get('/cliente/apagar/{id}', [App\Http\Controllers\controllerUsuario::clas
 
 // Rotas para o ControladorPedidoProduto
 Route::get('/pedidoProduto/{id}', [App\Http\Controllers\controllerEncomendaspecas::class, 'index'])->name('exibirPedidoProduto');
-Route::post('/pedidoProduto', [App\Http\Controllers\controllerEncomendaspecas::class, 'store'])->name('gravaNovoProdutoPedido');
-Route::get('/pedidoProduto/apagar/{id}', [App\Http\Controllers\controllerEncomendaspecas::class, 'destroy'])->name('deletaProdutoPedido');
+Route::post('/PedidoProduto', [App\Http\Controllers\controllerEncomendaspecas::class, 'store'])->name('gravaNovoProdutoPedido');
+Route::get('/PedidoProduto/apagar/{id}', [App\Http\Controllers\controllerEncomendaspecas::class, 'destroy'])->name('deletaProdutoPedido');
 
 
 // Rotas para o ControladorPedidos
@@ -28,7 +28,7 @@ Route::post('/pedido', [App\Http\Controllers\controllerEncomendas::class, 'store
 Route::get('/pedido/editar/{id}', [App\Http\Controllers\controllerEncomendas::class, 'edit'])->name('editarPedido');
 Route::post('/pedido/{id}', [App\Http\Controllers\controllerEncomendas::class, 'update'])->name('atualizaPedido');
 Route::get('/pedido/apagar/{id}', [App\Http\Controllers\controllerEncomendas::class, 'destroy'])->name('deletaPedido');
-Route::post('/novoPedidoProduto', [App\Http\Controllers\controllerEncomendas::class, 'novoProduto'])->name('novoPedidoProduto');
+Route::get('/novoPedidoProduto/{id}', [App\Http\Controllers\controllerEncomendas::class, 'novoProduto'])->name('novoPedidoProduto');
 
 
 // Rotas para o ControladorProduto
